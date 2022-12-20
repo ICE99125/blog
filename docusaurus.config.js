@@ -1,32 +1,22 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const math = require('remark-math');
+const katex = require('rehype-katex');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'ARCTURUS',
   tagline: '( ° ▽、° ) 欢迎光临',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://arcturus-blog.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'ICE99125', // Usually your GitHub org/user name.
-  projectName: 'arcturus-blog', // Usually your repo name.
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  favicon: 'logo.svg',
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans'],
   },
-
   presets: [
     [
       'classic',
@@ -34,17 +24,15 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/ICE99125/blog/tree/main',
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/ICE99125/blog/tree/main',
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -53,27 +41,46 @@ const config = {
     ],
   ],
 
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: 'keywords',
+          content: 'javascript, blog, notes, python',
+        },
+      ],
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 5,
+      },
       navbar: {
-        title: 'My Site',
+        title: 'ARCTURUS',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Logo',
+          src: 'logo.svg',
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
+            to: 'docs/learning/intro',
             position: 'left',
-            label: 'Tutorial',
+            label: '学习笔记',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
+            to: 'docs/frontend/html',
+            activeBasePath: 'docs/frontend/',
+            position: 'left',
+            label: '前端知识',
           },
         ],
       },
@@ -81,46 +88,71 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: '联系方式',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Telegram',
+                href: 'https://t.me/+OwZSySXhfiZiYzY1',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/ICE99125',
+              },
+              {
+                label: 'Email',
+                href: 'mailto:1638330246@qq.com',
               },
             ],
           },
           {
-            title: 'More',
+            title: '更多',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'GitHub',
+                href: 'https://github.com/ICE99125',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Yuque',
+                href: 'https://www.yuque.com/arcturus',
+              },
+              {
+                label: 'Juejin',
+                href: 'https://juejin.cn/user/1997142635849566',
+              },
+            ],
+          },
+          {
+            title: '前端框架',
+            items: [
+              {
+                label: 'vue',
+                href: 'https://cn.vuejs.org/',
+              },
+              {
+                label: 'react',
+                href: 'https://react.docschina.org/',
+              },
+            ],
+          },
+          {
+            title: '喜欢的组件库',
+            items: [
+              {
+                label: 'ant-design',
+                href: 'https://ant.design/index-cn',
+              },
+              {
+                label: 'vuetify',
+                href: 'https://next.vuetifyjs.com/',
+              },
+              {
+                label: 'quasar',
+                href: 'http://www.quasarchs.com/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ARCTURUS, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
@@ -130,3 +162,4 @@ const config = {
 };
 
 module.exports = config;
+
