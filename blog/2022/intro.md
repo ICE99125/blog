@@ -1,7 +1,7 @@
 ---
 title: 这是第一篇博客
-description: 这是我关于 Docusaurus 2 的第一篇博文。
-slug: welcome-docusaurus-v2
+description: 这是我关于 Docusaurus 2 的第一篇博文
+slug: 2022/intro
 authors: ICE99125
 tags: [hello, docusaurus]
 hide_table_of_contents: false
