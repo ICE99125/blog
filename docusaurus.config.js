@@ -60,6 +60,11 @@ const config = {
           content: 'javascript, blog, notes, python',
         },
       ],
+      algolia: {
+        appId: 'TAP8NHZ32K',
+        apiKey: '8d98d923befcf67aef61829752569b92',
+        indexName: 'BLOG',
+      },
       tableOfContents: {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
@@ -167,4 +172,3 @@ const config = {
 };
 
 module.exports = config;
-
