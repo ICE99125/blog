@@ -82,6 +82,11 @@ const config = {
             position: 'left',
             label: '前端知识',
           },
+          {
+            to: 'blog/2022/intro',
+            label: '博客',
+            position: 'left',
+          },
         ],
       },
       footer: {

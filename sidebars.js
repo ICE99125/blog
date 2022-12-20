@@ -49,6 +49,31 @@ const sidebars = {
   ],
   frontend: [
     {
+      type: 'doc',
+      id: 'frontend/html',
+      label: 'html',
+    },
+    {
+      type: 'doc',
+      id: 'frontend/nestjs',
+      label: 'nestjs',
+    },
+    {
+      type: 'doc',
+      id: 'frontend/axios',
+      label: 'axios',
+    },
+    {
+      type: 'doc',
+      id: 'frontend/browser',
+      label: 'brower',
+    },
+    {
+      type: 'doc',
+      id: 'frontend/performance',
+      label: 'performance',
+    },
+    {
       type: 'category',
       label: 'javascript',
       items: [
@@ -78,31 +103,6 @@ const sidebars = {
         'frontend/vue/vue',
         'frontend/vue/pinia',
       ],
-    },
-    {
-      type: 'doc',
-      id: 'frontend/html',
-      label: 'html',
-    },
-    {
-      type: 'doc',
-      id: 'frontend/nestjs',
-      label: 'nestjs',
-    },
-    {
-      type: 'doc',
-      id: 'frontend/axios',
-      label: 'axios',
-    },
-    {
-      type: 'doc',
-      id: 'frontend/browser',
-      label: 'brower',
-    },
-    {
-      type: 'doc',
-      id: 'frontend/performance',
-      label: 'performance',
     },
   ],
 };
