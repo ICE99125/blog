@@ -300,6 +300,17 @@ console.log(getType(null)); // null
 console.log(getType(undefined)); // undefined
 ```
 
+参考 `axios`
+
+```js
+const kindOf = (function (cache) {
+  return function (thing) {
+    const str = toString.call(thing);
+    return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
+  };
+})(Object.create(null));
+```
+
 ## 阻止冒泡
 
 ```js

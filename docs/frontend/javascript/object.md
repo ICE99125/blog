@@ -6,56 +6,56 @@ title: 对象
 
 1. 构造函数的 prototype 的 \_\_proto\_\_ 指向其父类的 prototype
 
-  ```js
-  class P {}
-  class ABC extends P {}
-  console.log(ABC.prototype.__proto__ === P.prototype); // true
-  ```
+```js
+class P {}
+class ABC extends P {}
+console.log(ABC.prototype.__proto__ === P.prototype); // true
+```
 
 2. 实例的 \_\_proto\_\_ 指向其构造函数的 prototype
 
-  ```js
-  class ABC {}
-  const abc = new ABC();
-  console.log(ABC.prototype === abc.__proto__); // true
-  ```
+```js
+class ABC {}
+const abc = new ABC();
+console.log(ABC.prototype === abc.__proto__); // true
+```
 
 3. 构造函数指向类
 
-  或者说使用 `class` 声明的类本身就是一个函数
+或者说使用 `class` 声明的类本身就是一个函数
 
-  ```js
-  class ABC {}
+```js
+class ABC {}
 
-  console.log(ABC.prototype.constructor === ABC); // true
-  ```
+console.log(ABC.prototype.constructor === ABC); // true
+```
 
 4. 静态属性在构造函数上, 不会被实例 “继承”
 
-  ```js
-  class ABC {
-    static abc = 10;
-  }
+```js
+class ABC {
+  static abc = 10;
+}
 
-  ABC.def = 10;
+ABC.def = 10;
 
-  // 等价于 console.log(ABC.prototype.constructor.abc);
-  // 因此不在实例的 __proto__ 上
-  console.log(ABC.abc); // 10
-  console.log(ABC.def); // 10
-  ```
+// 等价于 console.log(ABC.prototype.constructor.abc);
+// 因此不在实例的 __proto__ 上
+console.log(ABC.abc); // 10
+console.log(ABC.def); // 10
+```
 
 5. 所有类方法都在原型上
 
-  ```js
-  class ABC {
-    func() {
-      console.log('func');
-    }
+```js
+class ABC {
+  func() {
+    console.log('func');
   }
+}
 
-  ABC.prototype.func(); // func
-  ```
+ABC.prototype.func(); // func
+```
 
 ## this
 
@@ -182,6 +182,43 @@ Array.prototype.myForEach = function (fn, thisValue) {
     fn.call(thisValue, arr[i], i, arr);
   }
 };
+```
+
+参考 `axios` 源码 , 不仅支持数组, 还支持可迭代对象
+
+```js
+function forEach(obj, fn, { allOwnKeys = false } = {}) {
+  if (obj === null || typeof obj === 'undefined') {
+    return;
+  }
+
+  let i;
+  let l;
+
+  // 如果不是对象(包括 [] 和 {}), 强制转为数组
+  if (typeof obj !== 'object') {
+    obj = [obj];
+  }
+
+  if (isArray(obj)) {
+    for (i = 0, l = obj.length; i < l; i++) {
+      fn.call(null, obj[i], i, obj);
+    }
+  } else {
+    // 是否获取原型上的 key
+    const keys = allOwnKeys
+      ? Object.getOwnPropertyNames(obj)
+      : Object.keys(obj);
+
+    const len = keys.length;
+    let key;
+
+    for (i = 0; i < len; i++) {
+      key = keys[i];
+      fn.call(null, obj[key], key, obj);
+    }
+  }
+}
 ```
 
 ## 继承
@@ -334,3 +371,46 @@ console.log(A.baz); // 100
 也可以使用 `Object.keys` 遍历对象的, 且不会拿到原型链属性
 
 `JSON.stringify` 序列化的时候遇到 `undefined` 和 `函数` 的时候都会跳过
+
+### 判断简单对象(plain object)
+
+```js
+const isPlainObject = (val) => {
+  if (kindOf(val) !== 'object') {
+    return false;
+  }
+
+  // 获取变量原型
+  const prototype = Object.getPrototypeOf(val);
+
+  return (
+    (prototype === null /* 原型是 null, 如 object */ ||
+      prototype === Object.prototype ||
+      Object.getPrototypeOf(prototype) === null) /* 原型的原型是 null */ &&
+    !(Symbol.toStringTag in val) /* 不存在自定义类型标签 */ &&
+    !(Symbol.iterator in val) /* 变量不可迭代 */
+  );
+};
+```
+
+### 扩展对象
+
+```js
+const extend = (a, b, thisArg, { allOwnKeys } = {}) => {
+  forEach(
+    b /* 将 b 的属性扩展到 a 上 */,
+    (val, key) => {
+      /* b 有一个属性是函数并且存在自定义 this 时 */
+      if (thisArg && isFunction(val)) {
+        a[key] = bind(val, thisArg) /* 函数的 this 转为 thisArg */;
+      } else {
+        a[key] = val;
+      }
+    },
+    { allOwnKeys /* 是否扩展原型属性 */ }
+  );
+
+  return a;
+};
+```
+
