@@ -362,9 +362,11 @@ tags: [计算机网络, 路由, 网络攻击]
 ### 时延
 
 - `处理时延` 检查分组头部和决定将分组导向何处的处理时间
+  
   ![处理时延](./assets/physical/processing_delay.png)
 
 - `排队时延` 分组在链路上等待传输的时间
+  
   ![排队时延](./assets/physical/queue_delay.png)
 
 - `传输时延` 路由器将分组输出到链路的时间
@@ -404,10 +406,15 @@ tags: [计算机网络, 路由, 网络攻击]
   ![网络结构 I](./assets/physical/internet_structure_1.png)
 
 - 网络结构 II
+  
   ![网络结构 II](./assets/physical/internet_structure_2.png)
+
 - 网络结构 III
+
   ![网络结构 III](./assets/physical/internet_structure_3.png)
+
   数据经上游 ISP 中转
+
 - 网络结构 IV
 
   ![网络结构 IV](./assets/physical/internet_structure_4.png)
@@ -415,6 +422,7 @@ tags: [计算机网络, 路由, 网络攻击]
   `IXP` 多个 ISP 在一起对等并直接交换数据
 
 - 网络结构 V
+  
   ![网络结构 V](./assets/physical/internet_structure_5.png)
 
 ### Traceroute(路由跟踪)
@@ -438,12 +446,15 @@ tags: [计算机网络, 路由, 网络攻击]
 - `吞吐量`
 
   - 瞬时吞吐量
+  
   - 平均吞吐量
+  
   - 吞吐量的大小取决于链路 `最小值` (瓶颈链路)
 
   ![吞吐量](./assets/physical/throughput.png)
 
 - `协议分层`
+  
   ![协议](./assets/physical/protocol.png)
 
 - `封装`
