@@ -180,6 +180,8 @@ tags: [计算机网络, 差错检验, 多路访问协议, CSMA, ALOHA]
   - 多个分组可以同时传输
 
     ![CMDA](./assets/datalink/CDMA_2.png)
+  
+  ![习题八](./assets/datalink/eight.png)
 
 ### 随机接入协议
 
@@ -198,6 +200,8 @@ tags: [计算机网络, 差错检验, 多路访问协议, CSMA, ALOHA]
 - 如果发生碰撞, 则以概率 `p` 进行重发
 
 - 最大效率 `1/(2e)`
+
+![习题九](./assets/datalink/nine.png)
 
 #### 时隙 ALOHA 协议
 
