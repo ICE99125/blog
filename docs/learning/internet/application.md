@@ -43,6 +43,12 @@ tags: [计算机网络, 万维网, p2p, smtp, http, ftp]
 
   - 数据连接, 主动连接, 端口 `20`
 
+  :::tip 端口
+  
+  端口是服务端的端口, 客户端用什么端口都可以, 服务端用 `21` 监听, 用 `20` 发送数据
+  
+  :::
+
 - 匿名 FTP
 
   - 用户名 `anonymous`
@@ -84,6 +90,8 @@ tags: [计算机网络, 万维网, p2p, smtp, http, ftp]
 - 中国互联网络信息中心 `CNNIC`
 
 - 一个域名可以对应多个 IP, 多个域名也可以解析到同一个 IP 上
+
+- `授权域名服务器` 一定能够将其管辖的的主机名转换为主机 IP
 
 - 定义
 
@@ -140,6 +148,8 @@ tags: [计算机网络, 万维网, p2p, smtp, http, ftp]
   - `迭代查询` 查一次得不出结果但是能返回能解答的服务器 IP
 
     ![递归、迭代相结合](./assets/application/iterative_query.png)
+
+    ![习题一](./assets/application/one.png)
 
 - DNS 缓存
 
@@ -456,19 +466,39 @@ tags: [计算机网络, 万维网, p2p, smtp, http, ftp]
 
 ![SMTP](./assets/application/SMTP.png)
 
-- 使用 `TCP` 协议
-
-- 端口 `25`
+- 使用 `TCP` 协议, 端口 `25`
 
 - 一般不使用中间邮件服务器, 即使接收方没有开机, 也会一直停留在发送方并等待重试
 
-- 典型的报文头部
+- 邮件发送过程
 
   ```
-  From: alice@crepes.fr
-  To: bob@hamburger.edu
-  Subject: Searching for the meaning of life
+  A: 220 beta.gov simple mail transfer service ready
+  B: HELO alpha.edu ----> 邮件发送方
+  A: 250 beta.gov   ----> 邮件接收方
+  B: MAIL FROM:<smith@alpha.edu>
+  A: 250 mail accepted
+  B: RCPT TO:<jones@beta.gov>
+  A: 250 recipient accepted
+  B: RCPT TO:<green@beta.gov>
+  A: 550 no such user here
+  B: RCPT TO:brown@beta.govA: 250 recipient acceptedB: DATA
+  A: 354 start mail input; end with <CR><LF>.<CR><LF>
+  B: Date:Fri 27 May 2011 14:16:21 BJ
+  B: From:smith@alpha.edu
+  B: ...
+  A: 250 OK
+  B: QUIT
+  A: 221 beta.gov service closing transmission channel.
   ```
+
+- 只支持传输 `7` 比特的 ASCII 码内容
+
+:::tip
+
+邮件服务器之间使用 smtp 发送邮件, 但是用户与邮件服务器之间的接收/发送邮件用的 http
+
+:::
 
 ### 邮件访问协议
 
@@ -489,6 +519,8 @@ tags: [计算机网络, 万维网, p2p, smtp, http, ftp]
   - 下载并删除
 
 - `更新阶段` 客户发出 `quit` 命令结束会话
+
+- 使用 `明文` 传输密码
 
 :::info
 

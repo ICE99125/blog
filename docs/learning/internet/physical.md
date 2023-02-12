@@ -293,7 +293,7 @@ tags: [计算机网络, 路由, 网络攻击]
 
   - 数据交换的单位是报文(无大小限制)
 
-  - 存储转发形式, 需要收到完整报文后才能向下一跳发送
+  - `存储转发形式` 需要收到完整报文后才能向下一跳发送 ( 路由器 )
 
   - 动态分配线路
 
@@ -383,6 +383,8 @@ tags: [计算机网络, 路由, 网络攻击]
 
   ![ping](./assets/physical/ping.png)
 
+  ![习题三](./assets/physical/three.png)
+
 - `丢包` 没地方存放新来的分组, 因此路由器会将某些分组丢弃
 
   ![丢包率](./assets/physical/packet_loss_probability.png)
@@ -452,6 +454,8 @@ tags: [计算机网络, 路由, 网络攻击]
   - 吞吐量的大小取决于链路 `最小值` (瓶颈链路)
 
   ![吞吐量](./assets/physical/throughput.png)
+
+  ![习题二](./assets/physical/two.png)
 
 - `协议分层`
   
