@@ -157,6 +157,8 @@ tags: [计算机网络, 万维网, p2p, smtp, http, ftp]
 
   - DNS 服务器在 `一段时间` 后将 `丢弃` 缓存信息
 
+  - windows DNS 缓存的默认值是  `MaxCacheTTL`, 它的默认值是 `86400s`, 也就是一天
+
 - DNS 记录
 
   - 记录格式 `(Name, Value, Type, TTL)`
