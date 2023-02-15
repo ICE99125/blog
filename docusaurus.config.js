@@ -61,9 +61,9 @@ const config = {
         },
       ],
       algolia: {
-        appId: 'TAP8NHZ32K',
-        apiKey: '8d98d923befcf67aef61829752569b92',
-        indexName: 'BLOG',
+        appId: 'MNJUSJC94X',
+        apiKey: 'fc1c4faec4829331180b6a52aceee299',
+        indexName: 'arcturus-vercel',
       },
       tableOfContents: {
         minHeadingLevel: 2,
