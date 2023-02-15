@@ -201,8 +201,6 @@ tags: [计算机网络, 差错检验, 多路访问协议, CSMA, ALOHA]
 
 - 最大效率 `1/(2e)`
 
-![习题九](./assets/datalink/nine.png)
-
 #### 时隙 ALOHA 协议
 
 ![时隙ALOHA](./assets/datalink/aloha_2.png)
@@ -214,6 +212,8 @@ tags: [计算机网络, 差错检验, 多路访问协议, CSMA, ALOHA]
 - 节点会在时隙结束前检测到碰撞
 
 - 最大效率 `1/e`
+
+![习题九](./assets/datalink/nine.png)
 
 ### 载波侦听多路访问协议
 
