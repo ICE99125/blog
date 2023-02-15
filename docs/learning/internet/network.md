@@ -232,6 +232,8 @@ tags: [计算机网络, IPv4, IPv6, 路由协议, 路由选择算法]
 
 ![习题三](./assets/internet/three.png)
 
+![习题六](./assets/internet/six.png)
+
 #### 无分类编址(CIDR)
 
 - 消除了传统 A, B, C 类地址的概念
