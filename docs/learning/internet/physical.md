@@ -205,7 +205,7 @@ tags: [计算机网络, 路由, 网络攻击]
 
   - 极限数据传输速率
 
-    - ![极限数据传输速率](./assets/physical/nyquist_limiting_transmission_rate.png)
+    ![极限数据传输速率](./assets/physical/nyquist_limiting_transmission_rate.png)
 
     - `V` 是码元离散电平数目
 
