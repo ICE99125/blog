@@ -122,11 +122,11 @@ const config = {
                 href: 'https://github.com/ICE99125',
               },
               {
-                label: 'Yuque',
+                label: '语雀',
                 href: 'https://www.yuque.com/arcturus',
               },
               {
-                label: 'Juejin',
+                label: '掘金',
                 href: 'https://juejin.cn/user/1997142635849566',
               },
             ],

@@ -15,10 +15,10 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "2.2.0",
-    "@docusaurus/preset-classic": "2.2.0",
-    "@docusaurus/theme-classic": "^2.2.0",
-    "@docusaurus/types": "^2.2.0",
+    "@docusaurus/core": "2.3.1",
+    "@docusaurus/preset-classic": "2.3.1",
+    "@docusaurus/theme-classic": "^2.3.1",
+    "@docusaurus/types": "^2.3.1",
     "@mdx-js/react": "^1.6.22",
     "@types/node": "^18.11.17",
     "clsx": "^1.2.1",
@@ -30,7 +30,7 @@
     "remark-math": "3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.2.0",
+    "@docusaurus/module-type-aliases": "2.3.1",
     "@tsconfig/docusaurus": "^1.0.6",
     "typescript": "^4.7.4"
   },

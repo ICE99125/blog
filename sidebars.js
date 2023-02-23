@@ -9,6 +9,17 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: '算法导论',
+      items: [
+        'learning/algorithms/basic',
+        'learning/algorithms/techniques',
+        'learning/algorithms/methods',
+        'learning/algorithms/complexity',
+        'learning/algorithms/strategies',
+      ],
+    },
+    {
+      type: 'category',
       label: '计算机网络',
       items: [
         'learning/internet/application',
@@ -108,4 +119,3 @@ const sidebars = {
 };
 
 module.exports = sidebars;
-
