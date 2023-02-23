@@ -40,7 +40,6 @@ const config = {
       }),
     ],
   ],
-
   stylesheets: [
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
@@ -50,7 +49,6 @@ const config = {
       crossorigin: 'anonymous',
     },
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
