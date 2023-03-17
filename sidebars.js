@@ -9,17 +9,6 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '算法导论',
-      items: [
-        'learning/algorithms/basic',
-        'learning/algorithms/techniques',
-        'learning/algorithms/methods',
-        'learning/algorithms/complexity',
-        'learning/algorithms/strategies',
-      ],
-    },
-    {
-      type: 'category',
       label: '计算机网络',
       items: [
         'learning/internet/application',
@@ -56,6 +45,16 @@ const sidebars = {
       type: 'link',
       label: '数据结构',
       href: 'https://juejin.cn/column/7070003749472698399',
+    },
+    {
+      type: 'link',
+      label: '算法导论',
+      href: 'https://juejin.cn/column/7208817904547446840',
+    },
+    {
+      type: 'link',
+      label: '面对对象分析与设计',
+      href: 'https://www.yuque.com/arcturus/mht1b5',
     },
   ],
   frontend: [
