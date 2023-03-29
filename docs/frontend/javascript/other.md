@@ -6,67 +6,67 @@ title: 其他
 
 * `null` 表示没有对象
 
-```js
-Object.prototype.__proto__ = null; // true
-```
+  ```js
+  Object.prototype.__proto__ = null; // true
+  ```
 
-```js
-typeof null === 'object';
-```
+  ```js
+  typeof null === 'object';
+  ```
 
 * `undefined` 表示未定义
 
-```js
-typeof undefined === 'undefined';
-```
+  ```js
+  typeof undefined === 'undefined';
+  ```
 
 ## type 与 interface
 
 * 都可以扩展
 
-```ts
-interface Name { 
-  name: string; 
-}
+  ```ts
+  interface Name { 
+    name: string; 
+  }
 
-interface User extends Name { 
-  age: number; 
-}
-```
+  interface User extends Name { 
+    age: number; 
+  }
+  ```
 
-```ts
-type Name = { 
-  name: string; 
-}
+  ```ts
+  type Name = { 
+    name: string; 
+  }
 
-type User = Name & { age: number  };
-```
+  type User = Name & { age: number  };
+  ```
 
 * `type` 可以声明基本类型, 元组以及联合类型, `interface` 不行
 
-```ts
-// 基本类型
-type Name = string
+  ```ts
+  // 基本类型
+  type Name = string
 
-// 联合类型
-type Pet = Dog | Cat
+  // 联合类型
+  type Pet = Dog | Cat
 
-// 元组
-type PetList = [Dog, Pet]
-```
+  // 元组
+  type PetList = [Dog, Pet]
+  ```
 
 * `interface` 可以声明合并
 
-```ts
-interface User {
-  name: string
-  age: number
-}
+  ```ts
+  interface User {
+    name: string
+    age: number
+  }
 
-interface User {
-  sex: string
-}
-```
+  interface User {
+    sex: string
+  }
+  ```
 
 ## 垃圾回收
 
@@ -80,7 +80,7 @@ interface User {
 
 4. 把所有内存中对象标记修改为 `0` , 等待下一轮垃圾回收
 
-::: info
+:::info
 该方法简单, 但是容易出现内存碎片, 重新分配内存效率低, 需要时不时暂停线程去清理
 :::
 
@@ -96,7 +96,7 @@ interface User {
 
 4. 当这个值的引用次数变为 `0` 的时候, 回收空间
 
-::: info
+:::info
 计数器变为 0 时就立即回收, 不需要暂停线程, 但是存在循环引用问题, 计数器占用空间
 :::
 
@@ -279,7 +279,7 @@ function abc() {
 
 * `console.log` 所引用的变量不能被回收
 
-::: info
+:::info
 控制台打印的对象点击查看时不是历史数据, 而是实时的
 :::
 
