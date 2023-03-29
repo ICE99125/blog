@@ -24,7 +24,9 @@
 
 6. 事件委托
 
-- `relow(回流)` 重新计算页面的布局
+### 重排/重绘
+
+- `relow(回流, 重排)` 浏览器需要重新计算元素的位置和大小等属性, 从而重新排列元素的布局
 
   - 调整窗口大小
 
@@ -58,15 +60,27 @@
 
 - 最好直接改变元素, 不要通过改变父元素影响子元素
 
-- 尽量使用 class 少用 style 直接操作
+- 尽量使用 class 少用 style 直接操作 ( js 可以很容易修改 style )
 
-- 尽量使用 `transform` 做形变和位移
+  ```js
+  const element = document.querySelector('.my-element');
+  element.style.color = 'red';
+  ```
+
+  ```js
+  // 仅在添加时触发重排/重绘
+  element.classList.add('new-class');
+  ```
+
+- 尽量使用 `transform` 做形变和位移( transform 不会触发重排和重绘 )
 
 - 尽可能给有动画的元素使用 `absolute` 或 `fixed`
 
 - 尽量不使用复杂的后代选择器
 
 - 不要使用 `table` , 一个元素改变会导致全部重绘
+
+- 使用文档碎片( [DocumentFragment](https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentFragment) )来批量插入元素
 
 ## 事件委托
 

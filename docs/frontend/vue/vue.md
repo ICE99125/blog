@@ -8,7 +8,7 @@ title: vue
 
 ## provide/inject
 
-``` js {13}
+```js {13}
 // runtime-core/src/component.ts
 // 生成一个组件实例
 export function createComponentInstance(vnode, parent, suspense) {
@@ -26,7 +26,7 @@ export function createComponentInstance(vnode, parent, suspense) {
 }
 ```
 
-``` js
+```js
 // runtime-core/src/apiInject.ts
 // 给当前组件创建一个自己的 provide
 export function provide(key, value) {
@@ -50,7 +50,7 @@ export function provide(key, value) {
 }
 ```
 
-``` js
+```js
 // 通过原型链实现向上查找
 export function inject(key, defaultValue, treatDefaultAsFactory = false) {
   // 获取当前组件实例对象
@@ -78,7 +78,7 @@ export function inject(key, defaultValue, treatDefaultAsFactory = false) {
 
 ## nextTick
 
-``` js
+```js
 // runtime-core/src/scheduler.ts
 const resolvedPromise = Promise.resolve(); // 微任务创建器
 let currentFlushPromise = null; // 当前任务
@@ -87,4 +87,45 @@ export function nextTick(fn) {
   const p = currentFlushPromise || resolvedPromise;
   return fn ? p.then(fn) : p;
 }
+```
+
+## 双向绑定
+
+Vue3 会创建一个观察者对象, 该观察者对象会监听响应式对象的变化, 并将该对象的依赖添加到订阅列表中, 当数据发生变化时, 观察者会 `通知订阅列表` 中的所有依赖更新视图
+
+```html
+<input id="input" />
+
+<div>
+  消息: <span id="message"></span>
+</div>
+
+<button onclick="change()">点击</button>
+
+<script>
+  const data = {
+    message: '',
+  };
+
+  const input = document.querySelector('#input');
+  const msg = document.querySelector('#message');
+
+  Object.defineProperty(data, 'message', {
+    get: function () {
+      return input.value;
+    },
+    set: function (newValue) {
+      input.value = newValue;
+      msg.innerHTML = newValue;
+    },
+  });
+
+  input.addEventListener('input', function (event) {
+    data.message = event.target.value;
+  });
+
+  function change() {
+    data.message = '修改';
+  }
+</script>
 ```
