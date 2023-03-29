@@ -6,80 +6,55 @@ title: 对象
 
 1. 构造函数的 prototype 的 \_\_proto\_\_ 指向其父类的 prototype
 
-  ```js
-  class P {}
-  class ABC extends P {}
-  console.log(ABC.prototype.__proto__ === P.prototype); // true
-  ```
+```js
+class P {}
+class ABC extends P {}
+console.log(ABC.prototype.__proto__ === P.prototype); // true
+```
 
 2. 实例的 \_\_proto\_\_ 指向其构造函数的 prototype
 
-  ```js
-  class ABC {}
-  const abc = new ABC();
-  console.log(ABC.prototype === abc.__proto__); // true
-  ```
+```js
+class ABC {}
+const abc = new ABC();
+console.log(ABC.prototype === abc.__proto__); // true
+```
 
 3. 构造函数指向类
 
-  或者说使用 `class` 声明的类本身就是一个函数
+或者说使用 `class` 声明的类本身就是一个函数
 
-  ```js
-  class ABC {}
+```js
+class ABC {}
 
-  console.log(ABC.prototype.constructor === ABC); // true
-  ```
+console.log(ABC.prototype.constructor === ABC); // true
+```
 
 4. 静态属性在构造函数上, 不会被实例 “继承”
 
-  ```js
-  class ABC {
-    static abc = 10;
-  }
+```js
+class ABC {
+  static abc = 10;
+}
 
-  ABC.def = 10;
+ABC.def = 10;
 
-  // 等价于 console.log(ABC.prototype.constructor.abc);
-  // 因此不在实例的 __proto__ 上
-  console.log(ABC.abc); // 10
-  console.log(ABC.def); // 10
-  ```
+// 等价于 console.log(ABC.prototype.constructor.abc);
+// 因此不在实例的 __proto__ 上
+console.log(ABC.abc); // 10
+console.log(ABC.def); // 10
+```
 
 5. 所有类方法都在原型上
 
-  ```js
-  class ABC {
-    func() {
-      console.log('func');
-    }
-  }
-
-  ABC.prototype.func(); // func
-  ```
-
-## this
-
-谁调用类方法其 `this` 就指向谁
-
 ```js
 class ABC {
   func() {
-    console.log(this === ABC.prototype);
+    console.log('func');
   }
 }
 
-ABC.prototype.func(); // true
-```
-
-```js
-class ABC {
-  func() {
-    console.log(this === b);
-  }
-}
-
-var b = new ABC();
-b.func(); // true
+ABC.prototype.func(); // func
 ```
 
 ## new
@@ -111,6 +86,17 @@ function Constructor(name, age) {
 }
 
 const obj = New(Constructor, 'xiaomi', 10);
+```
+
+```js
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  return { gender: 'male' };
+}
+
+let person = new Person('Tom', 20);
+console.log(person); // { gender: 'male' }
 ```
 
 ## instanceof
@@ -413,4 +399,3 @@ const extend = (a, b, thisArg, { allOwnKeys } = {}) => {
   return a;
 };
 ```
-
