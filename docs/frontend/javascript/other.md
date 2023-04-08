@@ -4,7 +4,7 @@ title: 其他
 
 ## null 与 undefined
 
-* `null` 表示没有对象
+- `null` 表示没有对象
 
   ```js
   Object.prototype.__proto__ = null; // true
@@ -14,7 +14,7 @@ title: 其他
   typeof null === 'object';
   ```
 
-* `undefined` 表示未定义
+- `undefined` 表示未定义
 
   ```js
   typeof undefined === 'undefined';
@@ -22,49 +22,49 @@ title: 其他
 
 ## type 与 interface
 
-* 都可以扩展
+- 都可以扩展
 
   ```ts
-  interface Name { 
-    name: string; 
+  interface Name {
+    name: string;
   }
 
-  interface User extends Name { 
-    age: number; 
+  interface User extends Name {
+    age: number;
   }
   ```
 
   ```ts
-  type Name = { 
-    name: string; 
-  }
+  type Name = {
+    name: string;
+  };
 
-  type User = Name & { age: number  };
+  type User = Name & { age: number };
   ```
 
-* `type` 可以声明基本类型, 元组以及联合类型, `interface` 不行
+- `type` 可以声明基本类型, 元组以及联合类型, `interface` 不行
 
   ```ts
   // 基本类型
-  type Name = string
+  type Name = string;
 
   // 联合类型
-  type Pet = Dog | Cat
+  type Pet = Dog | Cat;
 
   // 元组
-  type PetList = [Dog, Pet]
+  type PetList = [Dog, Pet];
   ```
 
-* `interface` 可以声明合并
+- `interface` 可以声明合并
 
   ```ts
   interface User {
-    name: string
-    age: number
+    name: string;
+    age: number;
   }
 
   interface User {
-    sex: string
+    sex: string;
   }
   ```
 
@@ -107,7 +107,7 @@ const eventEmitter = {};
 
 // 事件订阅
 function on(event, fn) {
- if (typeof fn !== 'function' || fn.length !== 1) return;
+  if (typeof fn !== 'function' || fn.length !== 1) return;
 
   (eventEmitter[event] ?? (eventEmitter[event] = [])).push(fn);
 }
@@ -119,7 +119,7 @@ function emit(event, msg) {
   if (!!fns) {
     // 逐条发布消息
     fns.forEach((fn) => {
-        fn(msg);
+      fn(msg);
     });
   }
 }
@@ -228,7 +228,7 @@ function abc() {
 
 ## 内存泄露
 
-* 意外的全局变量
+- 意外的全局变量
 
   ```js
   function func() {
@@ -240,7 +240,7 @@ function abc() {
   delete window.age; // 不手动删除则在不关闭或刷新窗口的情况下一直存在
   ```
 
-* 被遗忘的计时器
+- 被遗忘的计时器
 
   ```js
   const timerId = setInterval(function () {
@@ -254,7 +254,7 @@ function abc() {
   clearInterval(timerId); // 不再使用后清除定时器
   ```
 
-* 分离的 DOM 引用
+- 分离的 DOM 引用
 
   ```html
   <body>
@@ -275,9 +275,9 @@ function abc() {
   </body>
   ```
 
-* 闭包
+- 闭包
 
-* `console.log` 所引用的变量不能被回收
+- `console.log` 所引用的变量不能被回收
 
 :::info
 控制台打印的对象点击查看时不是历史数据, 而是实时的
@@ -333,7 +333,7 @@ evt.preventDefault();
 // vue 中的 .prevent
 ```
 
-## false 
+## false
 
 ```js
 '' == false; // true
@@ -349,10 +349,10 @@ false == []; // true
 
 ```js
 // 会把数组变成字符串后拼接
-[1,2] + [3,4] // 1,23,4
+[1, 2] + [3, 4]; // 1,23,4
 
-'5' * 5 // 25
-'a' * 5 // NaN
+'5' * 5; // 25
+'a' * 5; // NaN
 ```
 
 ## 判断平台
@@ -391,4 +391,27 @@ const html = document.querySelector('html');
 html.oncopy = () => false; // 禁止复制
 html.onpaste = () => false; // 禁止粘贴
 html.oncontextmenu = () => false; // 禁止右键
+```
+
+## 闭包漏洞
+
+```js
+var o = (function () {
+  var obj = { b: 2 };
+
+  return {
+    get: function (k) {
+      return obj[k];
+    },
+  };
+})();
+
+Object.defineProperty(Object.prototype, 'getObj', {
+  get: function () {
+    return this;
+  },
+});
+
+// 能够获取到闭包内的变量
+console.log(o.get('getObj'));
 ```
