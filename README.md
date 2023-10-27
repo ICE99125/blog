@@ -1,8 +1,11 @@
 # ARCTURUS' blog
 
-使用 Docusaurus 搭建的博客系统, [点击访问](https://arcturus-blog.vercel.app)
+使用 Docusaurus 搭建的博客系统
 
 ˋ( ° ▽、° )
 
 会记录一些学习生活玩机中遇到的小问题
 
+++++++++++++++++++++++++++++++++++
+
+弃坑了, 静态博客仅适合不经常改动的情况, 还是语雀、notion 好用...
